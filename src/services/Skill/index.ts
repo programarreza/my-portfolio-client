@@ -30,3 +30,17 @@ export const getSkills = async () => {
 
   return await res.json();
 };
+
+export const updateSkill = async (args: any) => {
+  try {
+    const { data } = await axiosInstance.patch(
+      `/skills/${args?.skillId}`,
+      args?.skillData
+    );
+
+    return data;
+  } catch (error: any) {
+    console.log("from update skill", error?.response?.data?.message);
+    throw new Error(error);
+  }
+};

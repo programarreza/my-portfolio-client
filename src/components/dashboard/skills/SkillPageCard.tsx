@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/table";
 import { Tooltip } from "@nextui-org/tooltip";
 import { User } from "@nextui-org/user";
-// import Updateskill from "../Updateskill";
+import UpdateSkill from "./UpdateSkill";
 
 const rows = [
   { name: "IMAGE", uid: "image" },
@@ -92,10 +92,10 @@ export default function SkillPageCard({ skills }: IProps) {
             <TableCell>
               <div className="relative flex items-center gap-2">
                 <Tooltip content="Edit skill" className="">
-                  {/* <button className="text-lg text-default-400  cursor-pointer active:opacity-50">
-                    <Updateskill skill={skill} />
-                  </button> */}
-                  U
+                  <button className="text-lg text-default-400  cursor-pointer active:opacity-50">
+                    <UpdateSkill skill={skill} />
+                  </button>
+                  {/* U */}
                 </Tooltip>
                 <Tooltip color="danger" content="Delete skill">
                   {/* <button

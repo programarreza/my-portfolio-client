@@ -134,11 +134,6 @@ const UpdateProject = ({ project }: IProps) => {
         },
       });
 
-      //   const res = await updateProject(args).unwrap();
-      //   if (res?.success) {
-      //     toast.success(res?.message, { id: toastId, duration: 1000 });
-      //     onClose();
-      //   }
     } catch (error: any) {
       toast.error(error?.data?.message || "Something went wrong", {
         id: toastId,
