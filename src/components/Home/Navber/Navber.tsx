@@ -13,11 +13,12 @@ import Link, { default as NextLink } from "next/link";
 import { useEffect, useState } from "react";
 import { Logo } from "../../icons";
 import NavbarDropdown from "./NavbarDropDown";
+import { useUser } from "@/src/context/user.provider";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollDirection, setScrollDirection] = useState("up");
-  const selectedUser = false;
+  const { user, setIsLoading: userLoading } = useUser();
 
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
@@ -82,7 +83,7 @@ export const Navbar = () => {
               ))}
 
               <Link href="/dashboard">
-                {selectedUser ? (
+                {user ? (
                   <div className="flex justify-center items-center gap-2">
                     <NavbarDropdown />
                   </div>

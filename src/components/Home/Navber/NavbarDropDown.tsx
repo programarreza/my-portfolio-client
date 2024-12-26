@@ -1,5 +1,7 @@
 "use client";
 
+import { useUser } from "@/src/context/user.provider";
+import { logout } from "@/src/services/AuthService";
 import { Avatar } from "@nextui-org/avatar";
 import {
   Dropdown,
@@ -7,34 +9,22 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/dropdown";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const NavbarDropdown = () => {
   let userPath: string;
   const router = useRouter();
-  //   const pathname = usePathname();
-  //   const { user } = useLoggedUser();
-  //   const dispatch = useAppDispatch();
-  //   const cookies = new Cookies();
 
-//   const handleLogout = () => {
-//     // dispatch(logout());
+  const { user, setIsLoading: userLoading } = useUser();
 
-//     router.push("/");
-//   };
+  const handleLogout = () => {
+    logout();
+    userLoading(true);
+  };
 
   const handleNavigation = () => {
     router.push("/dashboard");
   };
-
-  //   if (user?.role === "ADMIN") {
-  //     userPath = "/admin-dashboard";
-  //   } else if (user?.role === "VENDOR") {
-  //     userPath = "/vendor-dashboard";
-  //   } else if (user?.role === "CUSTOMER") {
-  //     userPath = "/dashboard";
-  //   }
 
   return (
     <div>
@@ -42,7 +32,7 @@ const NavbarDropdown = () => {
         <DropdownTrigger onClick={(e: any) => e.preventDefault()}>
           <Avatar
             className="cursor-pointer border-2 border-green-600"
-            src={"user?.profilePhoto"}
+            src={user?.image}
           />
         </DropdownTrigger>
         <DropdownMenu aria-label="Static Actions">
@@ -50,18 +40,20 @@ const NavbarDropdown = () => {
             <div className="flex gap-2">
               {/* <Avatar src={user?.profilePhoto} /> */}
               <div>
-                <p>{"user?.name"}</p>
-                <p>{"user?.email"}</p>
+                <p>{user?.name}</p>
+                <p>{user?.email}</p>
               </div>
             </div>
           </DropdownItem>
 
-          <DropdownItem onClick={ handleNavigation} key="dashboard">My Dashboard</DropdownItem>
+          <DropdownItem onClick={handleNavigation} key="dashboard">
+            My Dashboard
+          </DropdownItem>
           <DropdownItem
             key="logout"
             className="text-danger"
             color="danger"
-            // onClick={() => handleLogout()}
+            onClick={() => handleLogout()}
           >
             Log out
           </DropdownItem>
