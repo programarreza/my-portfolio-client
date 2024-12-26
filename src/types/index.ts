@@ -8,7 +8,7 @@ export interface IInput {
   variant?: "bordered" | "flat" | "faded" | "underlined";
   size?: "md" | "sm" | "lg";
   required?: boolean;
-  type?: "text" | "email" | "password";
+  type?: "text" | "email" | "password" | "number";
   label?: ReactNode;
   name: string;
   placeholder?: string;

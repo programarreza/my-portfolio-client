@@ -11,27 +11,7 @@ const DashboardSidebar = () => {
   console.log({ user });
 
   return (
-    // <div className=" h-[calc(100vh-70px)] rounded-md sticky overflow-y-auto ">
-    //   <NextUINavbar className="px-0" maxWidth="xl" position="sticky">
-    //     <NavbarContent className="flex flex-col  justify-start  px-0 mx-0 ">
-
-    //         <>
-    //           <Link className="w-full" href={"/all-contents"}>
-    //             <Button className="w-full ">All Contents</Button>
-    //           </Link>
-    //           <Link className="w-full" href={"/users"}>
-    //             <Button className="w-full ">Users</Button>
-    //           </Link>
-    //           <Link className="w-full" href={"/payment-history"}>
-    //             <Button className="w-full ">Payment History</Button>
-    //           </Link>
-    //         </>
-
-    //     </NavbarContent>
-    //   </NextUINavbar>
-    // </div>
-
-    <div className="w-full">
+    <div className="w-full text-white bg-[#0F212F]">
       <div className="  min-h-screen text-center">
         <Tabs
           aria-label="Options"
@@ -39,7 +19,7 @@ const DashboardSidebar = () => {
             tabList: "gap-2 w-full relative rounded-none p-0 border-divider ",
             cursor: "w-full bg-[#22d3ee]",
             tab: "w-full px-0 h-10",
-            tabContent: "group-data-[selected=true]:text-[#06b6d4]",
+            tabContent: "group-data-[selected=true]:text-[#fff]",
           }}
           color="primary"
           fullWidth={true}
