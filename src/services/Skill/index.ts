@@ -44,3 +44,14 @@ export const updateSkill = async (args: any) => {
     throw new Error(error);
   }
 };
+
+export const deleteSkill = async (skillId: string) => {
+  try {
+    const { data } = await axiosInstance.delete(`/skills/${skillId}`);
+
+    return data;
+  } catch (error: any) {
+    console.log("from delete skill", error?.response?.data?.message);
+    throw new Error(error);
+  }
+};

@@ -1,4 +1,5 @@
 "use client";
+import { useDeleteSkill } from "@/src/hooks/skill.hook";
 import {
   Table,
   TableBody,
@@ -9,6 +10,7 @@ import {
 } from "@nextui-org/table";
 import { Tooltip } from "@nextui-org/tooltip";
 import { User } from "@nextui-org/user";
+import Swal from "sweetalert2";
 import UpdateSkill from "./UpdateSkill";
 
 const rows = [
@@ -24,38 +26,38 @@ interface IProps {
 }
 
 export default function SkillPageCard({ skills }: IProps) {
-  //   const { mutate: deleteskill } = useDeleteskill();
+  const { mutate: deleteSkill } = useDeleteSkill();
 
-  //   const handleDelete = (id: string) => {
-  //     Swal.fire({
-  //       title: "Are you sure?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#ff7527",
-  //       cancelButtonColor: "#d33",
-  //       confirmButtonText: "Yes, delete it!",
-  //       width: "350px",
-  //       customClass: {
-  //         popup: "bg-[#081B29] text-white ",
-  //         title: "text-white",
-  //       },
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         deleteskill(id);
-  //         Swal.fire({
-  //           title: "Deleted!",
-  //           text: "Your skill has been deleted.",
-  //           icon: "success",
-  //           width: "350px",
-  //           customClass: {
-  //             popup: " bg-[#081B29] text-white ",
-  //             title: "text-white",
-  //           },
-  //         });
-  //       }
-  //     });
-  //   };
+  const handleDelete = (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ff7527",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      width: "350px",
+      customClass: {
+        popup: "bg-[#081B29] text-white ",
+        title: "text-white",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteSkill(id);
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your skill has been deleted.",
+          icon: "success",
+          width: "350px",
+          customClass: {
+            popup: " bg-[#081B29] text-white ",
+            title: "text-white",
+          },
+        });
+      }
+    });
+  };
 
   return (
     <Table
@@ -95,10 +97,9 @@ export default function SkillPageCard({ skills }: IProps) {
                   <button className="text-lg text-default-400  cursor-pointer active:opacity-50">
                     <UpdateSkill skill={skill} />
                   </button>
-                  {/* U */}
                 </Tooltip>
                 <Tooltip color="danger" content="Delete skill">
-                  {/* <button
+                  <button
                     onClick={() => handleDelete(skill?._id)}
                     className="text-lg text-danger cursor-pointer active:opacity-50"
                   >
@@ -106,7 +107,7 @@ export default function SkillPageCard({ skills }: IProps) {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      className="size-8"
+                      className="size-5"
                     >
                       <path
                         fillRule="evenodd"
@@ -114,8 +115,7 @@ export default function SkillPageCard({ skills }: IProps) {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </button> */}
-                  D
+                  </button>
                 </Tooltip>
               </div>
             </TableCell>
