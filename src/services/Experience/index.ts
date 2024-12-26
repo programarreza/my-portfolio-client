@@ -1,5 +1,6 @@
 "use server";
 
+import envConfig from "@/src/config/envConfig";
 import axiosInstance from "@/src/lib/AxiosInstance";
 
 export const createExperience = async (formData: any): Promise<any> => {
@@ -18,4 +19,14 @@ export const createExperience = async (formData: any): Promise<any> => {
   } catch (error: any) {
     throw new Error(error.message);
   }
+};
+
+export const getExperiences = async () => {
+  const res = await fetch(`${envConfig.baseApi}/experiences`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch experiences data");
+  }
+
+  return await res.json();
 };
