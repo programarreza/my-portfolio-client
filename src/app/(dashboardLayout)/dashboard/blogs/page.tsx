@@ -1,5 +1,34 @@
+"use client";
+
+import BlogPageCard from "@/src/components/dashboard/blogs/BlogPageCard/BlogPageCard";
+import { useGetBlogs } from "@/src/hooks/blog.hook";
+import { ImSpinner6 } from "react-icons/im";
+
 const BlogsPage = () => {
-  return <div>BlogsPage</div>;
+  const { data, isLoading } = useGetBlogs();
+
+  return (
+    <div>
+      {isLoading ? (
+        <div className="flex justify-center items-center min-h-screen">
+          <div className="flex w-fit mx-auto">
+            <ImSpinner6 className="animate-spin m-auto" size={28} />
+            <span>Loading...</span>
+          </div>
+        </div>
+      ) : (
+        <>
+          {data?.data?.result?.length === 0 ? (
+            <p className="flex justify-center items-center min-h-screen my-auto text-xl font-medium">
+              blog not aboailvale
+            </p>
+          ) : (
+            <BlogPageCard blogs={data?.data?.result} />
+          )}
+        </>
+      )}
+    </div>
+  );
 };
 
 export default BlogsPage;

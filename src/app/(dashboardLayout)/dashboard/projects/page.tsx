@@ -6,8 +6,6 @@ import { ImSpinner6 } from "react-icons/im";
 
 const ProjectsPage = () => {
   const { data, isLoading } = useGetProjects();
-  console.log("data", data);
-  console.log("isLoading", isLoading);
 
   return (
     <div>

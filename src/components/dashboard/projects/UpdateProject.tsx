@@ -124,7 +124,6 @@ const UpdateProject = ({ project }: IProps) => {
         projectId: project?._id,
       };
 
-      console.log(args);
       handleUpdateProject(args as any, {
         onSuccess: () => {
           toast.success("Project updated successfully!", {
