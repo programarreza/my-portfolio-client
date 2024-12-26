@@ -1,7 +1,5 @@
 "use client";
 
-// import SeeFeaturesModal from "@/src/components/modals/SeeFeaturesModal";
-// import { useDeleteprojectMutation } from "@/src/lib/Redux/features/project/projectApi";
 import {
   Table,
   TableBody,
@@ -13,7 +11,7 @@ import {
 import { Tooltip } from "@nextui-org/tooltip";
 import { User } from "@nextui-org/user";
 import SeeFeaturesModal from "../../modal/SeeFeaturesModal";
-// import Updateproject from "../Updateproject/Updateproject";
+import UpdateProject from "./UpdateProject";
 
 const rows = [
   { name: "IMAGE", uid: "image" },
@@ -22,8 +20,6 @@ const rows = [
   { name: "DEPLOY LINK", uid: "deployLink" },
   { name: "GITHUB CLIENT LINK ", uid: "githubClientLink" },
   { name: "GITHUB SERVER LINK ", uid: "githubServerLink" },
-  //   { name: "PROJECT CHALLENGES", uid: "projectChallenges" },
-  //   { name: "IMPROVEMENT", uid: "improvement" },
   { name: "TECHNOLOGIES & FEATURES", uid: "technologies " },
   { name: "ACTIONS", uid: "actions" },
 ];
@@ -115,7 +111,7 @@ export default function ProjectPageCard({ projects }: IProps) {
               <div className="relative flex items-center gap-2">
                 <Tooltip content="Edit project" className="bg-[#081B29]">
                   <button className="text-lg text-default-400  cursor-pointer active:opacity-50">
-                    {/* <Updateproject project={project} /> */}U
+                    <UpdateProject project={project} />
                   </button>
                 </Tooltip>
                 <Tooltip color="danger" content="Delete project">

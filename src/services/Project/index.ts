@@ -30,3 +30,18 @@ export const getProjects = async () => {
 
   return await res.json();
 };
+
+export const updateProject = async (args: any) => {
+  console.log({ args });
+  try {
+    const { data } = await axiosInstance.patch(
+      `/projects/${args?.projectId}`,
+      args?.projectData
+    );
+
+    return data;
+  } catch (error: any) {
+    console.log("from updateUser", error?.response?.data?.message);
+    throw new Error(error);
+  }
+};
