@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { createProject, getProjects } from "../services/Project";
-import { TQueryParams } from "../types";
 
 export const useCreateProject = () => {
   const queryClient = useQueryClient();
@@ -12,8 +11,8 @@ export const useCreateProject = () => {
     onSuccess: () => {
       toast.success("Project created successfully!");
 
-      // Invalidate or refetch the contents after mutation success
-      //   queryClient.invalidateQueries({ queryKey: ["GET_CONTENTS"] }); // Invalidate the cache
+      //   Invalidate or refetch the contents after mutation success
+      queryClient.invalidateQueries({ queryKey: ["GET_PROJECTS"] }); // Invalidate the cache
     },
     onError: (error) => {
       toast.error(error.message);
@@ -21,15 +20,11 @@ export const useCreateProject = () => {
   });
 };
 
-export const useGetProjects = (
-  page: number,
-  pageSize: number,
-  params: TQueryParams[]
-) => {
+export const useGetProjects = () => {
   return useQuery({
-    queryKey: ["GET_PROJECTS", page, pageSize, params],
+    queryKey: ["GET_PROJECTS"],
     queryFn: async () => {
-      return await getProjects(page, pageSize, params);
+      return await getProjects();
     },
   });
 };
