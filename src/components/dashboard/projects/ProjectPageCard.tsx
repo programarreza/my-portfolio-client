@@ -1,5 +1,6 @@
 "use client";
 
+import { useDeleteProject } from "@/src/hooks/project.hook";
 import {
   Table,
   TableBody,
@@ -10,6 +11,7 @@ import {
 } from "@nextui-org/table";
 import { Tooltip } from "@nextui-org/tooltip";
 import { User } from "@nextui-org/user";
+import Swal from "sweetalert2";
 import SeeFeaturesModal from "../../modal/SeeFeaturesModal";
 import UpdateProject from "./UpdateProject";
 
@@ -20,7 +22,7 @@ const rows = [
   { name: "DEPLOY LINK", uid: "deployLink" },
   { name: "GITHUB CLIENT LINK ", uid: "githubClientLink" },
   { name: "GITHUB SERVER LINK ", uid: "githubServerLink" },
-  { name: "TECHNOLOGIES & FEATURES", uid: "technologies " },
+  { name: "FEATURES", uid: "technologies " },
   { name: "ACTIONS", uid: "actions" },
 ];
 
@@ -29,38 +31,38 @@ interface IProps {
 }
 
 export default function ProjectPageCard({ projects }: IProps) {
-  //   const [deleteproject] = useDeleteprojectMutation();
+  const { mutate: deleteProject } = useDeleteProject();
 
-  //   const handleDelete = (id: string) => {
-  //     Swal.fire({
-  //       title: "Are you sure?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#ff7527",
-  //       cancelButtonColor: "#d33",
-  //       confirmButtonText: "Yes, delete it!",
-  //       width: "350px",
-  //       customClass: {
-  //         popup: "bg-[#081B29] text-white ",
-  //         title: "text-white",
-  //       },
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         deleteproject(id);
-  //         Swal.fire({
-  //           title: "Deleted!",
-  //           text: "Your project has been deleted.",
-  //           icon: "success",
-  //           width: "350px",
-  //           customClass: {
-  //             popup: " bg-[#471133] text-white ",
-  //             title: "text-white",
-  //           },
-  //         });
-  //       }
-  //     });
-  //   };
+  const handleDelete = (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ff7527",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      width: "350px",
+      customClass: {
+        popup: "bg-[#081B29] text-white ",
+        title: "text-white",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteProject(id);
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your project has been deleted.",
+          icon: "success",
+          width: "350px",
+          customClass: {
+            popup: " bg-[#081B29] text-white ",
+            title: "text-white",
+          },
+        });
+      }
+    });
+  };
 
   return (
     <Table
@@ -109,13 +111,13 @@ export default function ProjectPageCard({ projects }: IProps) {
             </TableCell>
             <TableCell>
               <div className="relative flex items-center gap-2">
-                <Tooltip content="Edit project" className="bg-[#081B29]">
+                <Tooltip content="Edit project" className="">
                   <button className="text-lg text-default-400  cursor-pointer active:opacity-50">
                     <UpdateProject project={project} />
                   </button>
                 </Tooltip>
                 <Tooltip color="danger" content="Delete project">
-                  {/* <button
+                  <button
                     onClick={() => handleDelete(project?._id)}
                     className="text-lg text-danger cursor-pointer active:opacity-50"
                   >
@@ -131,8 +133,7 @@ export default function ProjectPageCard({ projects }: IProps) {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </button> */}
-                  D
+                  </button>
                 </Tooltip>
               </div>
             </TableCell>

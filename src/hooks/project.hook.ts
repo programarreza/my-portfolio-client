@@ -1,6 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { createProject, getProjects, updateProject } from "../services/Project";
+import {
+  createProject,
+  deleteProject,
+  getProjects,
+  updateProject,
+} from "../services/Project";
 
 export const useCreateProject = () => {
   const queryClient = useQueryClient();
@@ -11,7 +16,6 @@ export const useCreateProject = () => {
     onSuccess: () => {
       toast.success("Project created successfully!");
 
-      //   Invalidate or refetch the contents after mutation success
       queryClient.invalidateQueries({ queryKey: ["GET_PROJECTS"] });
     },
     onError: (error) => {
@@ -37,7 +41,24 @@ export const useUpdateProject = () => {
     mutationFn: async (args) => updateProject(args),
     onSuccess: () => {
       toast.success("Project updated successfully!");
-      //   Invalidate or refetch the contents after mutation success
+
+      queryClient.invalidateQueries({ queryKey: ["GET_PROJECTS"] });
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+};
+
+export const useDeleteProject = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<any, Error, string>({
+    mutationKey: ["DELETE_PROJECT"],
+    mutationFn: async (projectId) => deleteProject(projectId),
+    onSuccess: () => {
+      toast.success("Project deleted successfully!");
+
       queryClient.invalidateQueries({ queryKey: ["GET_PROJECTS"] });
     },
     onError: (error) => {

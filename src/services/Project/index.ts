@@ -32,7 +32,6 @@ export const getProjects = async () => {
 };
 
 export const updateProject = async (args: any) => {
-  console.log({ args });
   try {
     const { data } = await axiosInstance.patch(
       `/projects/${args?.projectId}`,
@@ -42,6 +41,17 @@ export const updateProject = async (args: any) => {
     return data;
   } catch (error: any) {
     console.log("from updateUser", error?.response?.data?.message);
+    throw new Error(error);
+  }
+};
+
+export const deleteProject = async (projectId: string) => {
+  try {
+    const { data } = await axiosInstance.delete(`/projects/${projectId}`);
+
+    return data;
+  } catch (error: any) {
+    console.log("from delete project", error?.response?.data?.message);
     throw new Error(error);
   }
 };
