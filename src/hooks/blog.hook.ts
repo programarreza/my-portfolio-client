@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { createBlog, getBlogs, updateBlog } from "../services/Blog";
+import { createBlog, deleteBlog, getBlogs, updateBlog } from "../services/Blog";
 
 export const useCreateBlog = () => {
   const queryClient = useQueryClient();
@@ -36,6 +36,23 @@ export const useUpdateBlog = () => {
     mutationFn: async (args) => updateBlog(args),
     onSuccess: () => {
       toast.success("Blog updated successfully!");
+
+      queryClient.invalidateQueries({ queryKey: ["GET_BLOGS"] });
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+};
+
+export const useDeleteBlog = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<any, Error, string>({
+    mutationKey: ["DELETE_BLOG"],
+    mutationFn: async (BlogId) => deleteBlog(BlogId),
+    onSuccess: () => {
+      toast.success("Blog deleted successfully!");
 
       queryClient.invalidateQueries({ queryKey: ["GET_BLOGS"] });
     },

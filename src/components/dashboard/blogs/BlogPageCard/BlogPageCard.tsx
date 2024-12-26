@@ -1,6 +1,5 @@
 "use client";
-
-// import { useDeleteblog } from "@/src/hooks/blog.hook";
+import { useDeleteBlog } from "@/src/hooks/blog.hook";
 import {
   Table,
   TableBody,
@@ -11,8 +10,8 @@ import {
 } from "@nextui-org/table";
 import { Tooltip } from "@nextui-org/tooltip";
 import { User } from "@nextui-org/user";
+import Swal from "sweetalert2";
 import UpdateBlog from "../UpdateBlog";
-// import Updateblog from "./Updateblog";
 
 const rows = [
   { name: "IMAGE", uid: "image" },
@@ -26,38 +25,38 @@ interface IProps {
 }
 
 export default function BlogPageCard({ blogs }: IProps) {
-  //   const { mutate: deleteblog } = useDeleteblog();
+  const { mutate: deleteBlog } = useDeleteBlog();
 
-  //   const handleDelete = (id: string) => {
-  //     Swal.fire({
-  //       title: "Are you sure?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#ff7527",
-  //       cancelButtonColor: "#d33",
-  //       confirmButtonText: "Yes, delete it!",
-  //       width: "350px",
-  //       customClass: {
-  //         popup: "bg-[#081B29] text-white ",
-  //         title: "text-white",
-  //       },
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         deleteblog(id);
-  //         Swal.fire({
-  //           title: "Deleted!",
-  //           text: "Your blog has been deleted.",
-  //           icon: "success",
-  //           width: "350px",
-  //           customClass: {
-  //             popup: " bg-[#081B29] text-white ",
-  //             title: "text-white",
-  //           },
-  //         });
-  //       }
-  //     });
-  //   };
+  const handleDelete = (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ff7527",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      width: "350px",
+      customClass: {
+        popup: "bg-[#081B29] text-white ",
+        title: "text-white",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteBlog(id);
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your blog has been deleted.",
+          icon: "success",
+          width: "350px",
+          customClass: {
+            popup: " bg-[#081B29] text-white ",
+            title: "text-white",
+          },
+        });
+      }
+    });
+  };
 
   return (
     <Table
@@ -106,10 +105,9 @@ export default function BlogPageCard({ blogs }: IProps) {
                   <button className="text-lg text-default-400  cursor-pointer active:opacity-50">
                     <UpdateBlog blog={blog} />
                   </button>
-                
                 </Tooltip>
                 <Tooltip color="danger" content="Delete blog">
-                  {/* <button
+                  <button
                     onClick={() => handleDelete(blog?._id)}
                     className="text-lg text-danger cursor-pointer active:opacity-50"
                   >
@@ -117,7 +115,7 @@ export default function BlogPageCard({ blogs }: IProps) {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      className="size-5"
+                      className="size-8"
                     >
                       <path
                         fillRule="evenodd"
@@ -125,8 +123,7 @@ export default function BlogPageCard({ blogs }: IProps) {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </button> */}
-                  D
+                  </button>
                 </Tooltip>
               </div>
             </TableCell>

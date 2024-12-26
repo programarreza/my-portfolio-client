@@ -40,3 +40,14 @@ export const updateBlog = async (args: any) => {
     throw new Error(error);
   }
 };
+
+export const deleteBlog = async (blogId: string) => {
+  try {
+    const { data } = await axiosInstance.delete(`/blogs/${blogId}`);
+
+    return data;
+  } catch (error: any) {
+    console.log("from delete blog", error?.response?.data?.message);
+    throw new Error(error);
+  }
+};
