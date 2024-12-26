@@ -6,6 +6,7 @@ import RWInput from "@/src/components/form/RWInput";
 import RWTextArea from "@/src/components/form/RWTextForm";
 import { useUser } from "@/src/context/user.provider";
 import { useCreateProject } from "@/src/hooks/project.hook";
+import { useGetSkills } from "@/src/hooks/skill.hook";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/select";
@@ -23,21 +24,9 @@ import { toast } from "sonner";
 const CreateProjectPage = () => {
   const { user } = useUser();
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
+  const { data } = useGetSkills();
 
-  const skillsData = [
-    {
-      _id: "676cf7fa7a8d21473c787be9",
-      name: "react",
-    },
-    {
-      _id: "676cf81b7a8d21473c787bed",
-      name: "next.js",
-    },
-    {
-      _id: "676cf83b7a8d21473c787bf1",
-      name: "mongoose",
-    },
-  ];
+  const skillsData = data?.data;
 
   const { mutate: handleCreateProject, isPending } = useCreateProject();
   const router = useRouter();

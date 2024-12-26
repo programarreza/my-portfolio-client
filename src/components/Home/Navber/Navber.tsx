@@ -1,6 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/src/config/site";
+import { useUser } from "@/src/context/user.provider";
 import {
   NavbarBrand,
   NavbarContent,
@@ -13,7 +14,6 @@ import Link, { default as NextLink } from "next/link";
 import { useEffect, useState } from "react";
 import { Logo } from "../../icons";
 import NavbarDropdown from "./NavbarDropDown";
-import { useUser } from "@/src/context/user.provider";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,7 @@ export const Navbar = () => {
 
   return (
     <div
-      className={` fixed top-0 left-0 w-full z-50 transition-transform duration-300 ease-in-out ${
+      className={`text-white fixed top-0 left-0 w-full z-50 transition-transform duration-300 ease-in-out ${
         scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"
       }`}
       style={{ backdropFilter: "blur(10px)" }}
