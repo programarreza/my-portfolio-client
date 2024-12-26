@@ -1,6 +1,6 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { createSkill } from "../services/Skill";
+import { createSkill, getSkills } from "../services/Skill";
 
 export const useCreateSkill = () => {
   const queryClient = useQueryClient();
@@ -15,6 +15,15 @@ export const useCreateSkill = () => {
     },
     onError: (error) => {
       toast.error(error.message);
+    },
+  });
+};
+
+export const useGetSkills = () => {
+  return useQuery({
+    queryKey: ["GET_SKILLS"],
+    queryFn: async () => {
+      return await getSkills();
     },
   });
 };
