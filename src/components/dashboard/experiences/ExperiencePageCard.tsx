@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@nextui-org/table";
 import { Tooltip } from "@nextui-org/tooltip";
+import UpdateExperience from "./UpdateExperiences";
 
 const rows = [
   { name: "CONTENT", uid: "content" },
@@ -22,39 +23,6 @@ interface IProps {
 }
 
 export default function ExperiencePageCard({ experiences }: IProps) {
-  //   const { mutate: deleteBlog } = useDeleteBlog();
-
-  //   const handleDelete = (id: string) => {
-  //     Swal.fire({
-  //       title: "Are you sure?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#ff7527",
-  //       cancelButtonColor: "#d33",
-  //       confirmButtonText: "Yes, delete it!",
-  //       width: "350px",
-  //       customClass: {
-  //         popup: "bg-[#081B29] text-white ",
-  //         title: "text-white",
-  //       },
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         deleteBlog(id);
-  //         Swal.fire({
-  //           title: "Deleted!",
-  //           text: "Your blog has been deleted.",
-  //           icon: "success",
-  //           width: "350px",
-  //           customClass: {
-  //             popup: " bg-[#081B29] text-white ",
-  //             title: "text-white",
-  //           },
-  //         });
-  //       }
-  //     });
-  //   };
-
   return (
     <Table
       aria-label="all blog from dashboard"
@@ -89,10 +57,10 @@ export default function ExperiencePageCard({ experiences }: IProps) {
             <TableCell>
               <div className="relative flex items-center gap-2">
                 <Tooltip content="Edit experience" className="">
-                  U{" "}
-                  {/* <button className="text-lg text-default-400  cursor-pointer active:opacity-50">
-                    <UpdateBlog blog={blog} />
-                  </button> */}
+                  
+                  <button className="text-lg text-default-400  cursor-pointer active:opacity-50">
+                    <UpdateExperience experience={experience} />
+                  </button>
                 </Tooltip>
               </div>
             </TableCell>

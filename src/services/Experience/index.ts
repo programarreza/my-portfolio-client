@@ -30,3 +30,17 @@ export const getExperiences = async () => {
 
   return await res.json();
 };
+
+export const updateExperience = async (args: any) => {
+  try {
+    const { data } = await axiosInstance.patch(
+      `/experiences/${args?.experienceId}`,
+      args?.experienceData
+    );
+
+    return data;
+  } catch (error: any) {
+    console.log("from update experience", error?.response?.data?.message);
+    throw new Error(error);
+  }
+};

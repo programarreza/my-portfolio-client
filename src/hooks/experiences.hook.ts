@@ -1,6 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { createExperience, getExperiences } from "../services/Experience";
+import {
+  createExperience,
+  getExperiences,
+  updateExperience,
+} from "../services/Experience";
 
 export const useCreateExperience = () => {
   const queryClient = useQueryClient();
@@ -25,6 +29,23 @@ export const useGetExperience = () => {
     queryKey: ["GET_EXPERIENCE"],
     queryFn: async () => {
       return await getExperiences();
+    },
+  });
+};
+
+export const useUpdateExperience = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<any, Error>({
+    mutationKey: ["UPDATE_EXPERIENCE"],
+    mutationFn: async (args) => updateExperience(args),
+    onSuccess: () => {
+      toast.success("Experience updated successfully!");
+
+      queryClient.invalidateQueries({ queryKey: ["GET_EXPERIENCE"] });
+    },
+    onError: (error) => {
+      toast.error(error.message);
     },
   });
 };
