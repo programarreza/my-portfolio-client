@@ -1,15 +1,13 @@
-
 const DownloadBtn = () => {
-  const fileUrl = "/md_shafikul_islam_resume.pdf";
+  const fileUrl = "../../../public/md_shafikul_islam_resume.pdf";
 
   return (
     <div>
-       <a href={fileUrl} target="_blank" download rel="noopener noreferrer">
+      <a download href={fileUrl} rel="noopener noreferrer" target="_blank">
         <button className="uppercase bg-[#00abf0]  p-2.5 rounded-md font-semibold t-2 hover:shadow-xl hover:shadow-cyan-500/50 hover:bg-[#0090f0]">
-          Download Resume 
+          Download Resume
         </button>
       </a>
-      
     </div>
   );
 };
