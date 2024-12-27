@@ -51,15 +51,15 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className=" text-black bg-[#F2F4F8]">
+    <div className=" bg-[#0F212F]">
       <div className=" min-h-screen ">
         <div className="w-full flex flex-col justify-center items-center my-auto">
           <div className="hero">
             <div className=" flex flex-col md:flex-row  rounded-xl justify-between">
               {/* form area */}
-              <div className="lg:w-[600px] bg-white border mt-24  rounded-xl p-12 ">
+              <div className="lg:w-[600px] text-white bg-[#081B29] border mt-24  rounded-xl p-12 ">
                 <div className="text-center py-8 text-2xl font-semibold">
-                  <h3>Welcome To EasyShop</h3>
+                  <h3>Welcome To Portfolio</h3>
                   <p className="text-medium">Please register</p>
                 </div>
 
@@ -106,7 +106,7 @@ const RegisterPage = () => {
                   </div>
 
                   <button
-                    className="w-full py-3 my-4 px-6 border rounded-lg hover:bg-gray-200"
+                    className="w-full py-3 hover:text-black my-4 px-6 border rounded-lg hover:bg-gray-200"
                     type="submit"
                   >
                     Register
