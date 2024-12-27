@@ -26,6 +26,16 @@ export const getBlogs = async () => {
   return await res.json();
 };
 
+export const getSingleBlog = async (blogId: string) => {
+  const res = await fetch(`${envConfig.baseApi}/blogs/${blogId}`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch blog data");
+  }
+
+  return await res.json();
+};
+
 export const updateBlog = async (args: any) => {
   console.log({ args });
   try {

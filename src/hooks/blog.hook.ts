@@ -1,6 +1,13 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { createBlog, deleteBlog, getBlogs, updateBlog } from "../services/Blog";
+
+import {
+  createBlog,
+  deleteBlog,
+  getBlogs,
+  getSingleBlog,
+  updateBlog,
+} from "../services/Blog";
 
 export const useCreateBlog = () => {
   const queryClient = useQueryClient();
@@ -24,6 +31,15 @@ export const useGetBlogs = () => {
     queryKey: ["GET_BLOGS"],
     queryFn: async () => {
       return await getBlogs();
+    },
+  });
+};
+
+export const useGetSingleBlogs = (blogId: string) => {
+  return useQuery({
+    queryKey: ["GET_BLOG", blogId],
+    queryFn: async () => {
+      return await getSingleBlog(blogId);
     },
   });
 };

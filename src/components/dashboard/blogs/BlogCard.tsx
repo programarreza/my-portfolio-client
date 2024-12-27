@@ -9,10 +9,7 @@ const BlogCard = ({ blogs }: { blogs: any }) => {
       <div className="grid grid-cols-4 gap-3">
         {blogs.map((blog: any) => (
           <Link key={blog?._id} passHref href={`/blogs/${blog?._id}`}>
-            <div
-              key={blog?._id}
-              className="shadow-large border border-gray-500 flex flex-col justify-between h-full p-4 rounded-lg"
-            >
+            <div className="shadow-large border border-gray-500 flex flex-col justify-between h-full p-4 rounded-lg">
               <div
                 dangerouslySetInnerHTML={{
                   __html:
