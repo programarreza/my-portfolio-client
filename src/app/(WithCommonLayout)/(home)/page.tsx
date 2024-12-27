@@ -1,6 +1,7 @@
 import Banner from "../../../components/Home/Banner";
 import Projects from "../../../components/Home/Projects";
 import SkillSection from "../../../components/Home/SkillSection";
+import Education from "../../../components/Home/Education";
 
 const HomePage = () => {
   return (
@@ -17,9 +18,9 @@ const HomePage = () => {
         <Projects />
       </section>
 
-      {/* <section id="educational">
+      <section id="educational">
     <Education />
-  </section> */}
+  </section>
       {/* <section id="about">
     <About />
   </section> */}
