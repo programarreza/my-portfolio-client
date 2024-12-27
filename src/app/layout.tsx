@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { Metadata, Viewport } from "next";
 import "../styles/globals.css";
 
+import Footer from "../components/Home/Footer";
 import { Navbar } from "../components/Home/Navber/Navber";
 import { fontSans } from "../config/fonts";
 import { siteConfig } from "../config/site";
@@ -42,6 +43,7 @@ export default function RootLayout({
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <Navbar />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

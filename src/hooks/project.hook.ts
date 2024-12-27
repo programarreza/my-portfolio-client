@@ -1,9 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
 import {
   createProject,
   deleteProject,
   getProjects,
+  getSingleProject,
   updateProject,
 } from "../services/Project";
 
@@ -29,6 +31,15 @@ export const useGetProjects = () => {
     queryKey: ["GET_PROJECTS"],
     queryFn: async () => {
       return await getProjects();
+    },
+  });
+};
+
+export const useGetSingleProject = (projectId: string) => {
+  return useQuery({
+    queryKey: ["GET_PROJECT", projectId],
+    queryFn: async () => {
+      return await getSingleProject(projectId);
     },
   });
 };

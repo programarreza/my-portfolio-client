@@ -31,6 +31,16 @@ export const getProjects = async () => {
   return await res.json();
 };
 
+export const getSingleProject = async (projectId: string) => {
+  const res = await fetch(`${envConfig.baseApi}/projects/${projectId}`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch project data");
+  }
+
+  return await res.json();
+};
+
 export const updateProject = async (args: any) => {
   try {
     const { data } = await axiosInstance.patch(

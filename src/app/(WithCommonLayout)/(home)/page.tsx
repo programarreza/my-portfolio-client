@@ -2,7 +2,6 @@ import About from "../../../components/Home/About";
 import Banner from "../../../components/Home/Banner";
 import Contact from "../../../components/Home/Contact";
 import Education from "../../../components/Home/Education";
-import Footer from "../../../components/Home/Footer";
 import Projects from "../../../components/Home/Projects";
 import SkillSection from "../../../components/Home/SkillSection";
 
@@ -29,9 +28,6 @@ const HomePage = () => {
       </section>
       <section id="contact">
         <Contact />
-      </section>
-      <section>
-        <Footer />
       </section>
     </div>
   );
