@@ -1,7 +1,8 @@
+import About from "../../../components/Home/About";
 import Banner from "../../../components/Home/Banner";
+import Education from "../../../components/Home/Education";
 import Projects from "../../../components/Home/Projects";
 import SkillSection from "../../../components/Home/SkillSection";
-import Education from "../../../components/Home/Education";
 
 const HomePage = () => {
   return (
@@ -19,11 +20,11 @@ const HomePage = () => {
       </section>
 
       <section id="educational">
-    <Education />
-  </section>
-      {/* <section id="about">
-    <About />
-  </section> */}
+        <Education />
+      </section>
+      <section id="about">
+        <About />
+      </section>
       {/* <section id="contact">
     <Contact />
   </section> */}
