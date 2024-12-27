@@ -1,19 +1,19 @@
 "use client";
 
-import { siteConfig } from "@/src/config/site";
-import { useUser } from "@/src/context/user.provider";
 import {
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
   Navbar as NextUINavbar,
 } from "@nextui-org/navbar";
-import { link as linkStyles } from "@nextui-org/theme";
-import clsx from "clsx";
 import Link, { default as NextLink } from "next/link";
 import { useEffect, useState } from "react";
+
 import { Logo } from "../../icons";
+
 import NavbarDropdown from "./NavbarDropDown";
+import NavbarLinks from "./NavbarLinks";
+
+import { useUser } from "@/src/context/user.provider";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,21 +66,7 @@ export const Navbar = () => {
           {/* content-2 */}
           <div className="navbar-end  flex items-center gap-8 font-medium text-lg ">
             <ul className="hidden lg:flex gap-4 justify-start ml-2">
-              {siteConfig.navItems.map((item) => (
-                <NavbarItem key={item.href}>
-                  <NextLink
-                    className={clsx(
-                      " mt-2", // Default text color set to white
-                      linkStyles({ color: "foreground" }),
-                      "data-[active=true]:text-primary data-[active=true]:font-medium"
-                    )}
-                    color="foreground"
-                    href={item.href}
-                  >
-                    {item.label}
-                  </NextLink>
-                </NavbarItem>
-              ))}
+              <NavbarLinks />
 
               <Link href="/dashboard">
                 {user ? (
