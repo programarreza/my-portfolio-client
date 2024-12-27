@@ -50,7 +50,6 @@ export const updateProject = async (args: any) => {
 
     return data;
   } catch (error: any) {
-    console.log("from updateUser", error?.response?.data?.message);
     throw new Error(error);
   }
 };
@@ -61,7 +60,6 @@ export const deleteProject = async (projectId: string) => {
 
     return data;
   } catch (error: any) {
-    console.log("from delete project", error?.response?.data?.message);
     throw new Error(error);
   }
 };

@@ -42,7 +42,6 @@ const CreateProjectPage = () => {
     const toastId = toast.loading("project creating...");
 
     try {
-      console.log("data", data, { selectedValues });
       const formData = new FormData();
       const jsonData = {
         title: data.title,

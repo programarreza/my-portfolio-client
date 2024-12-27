@@ -8,8 +8,6 @@ import { Tab, Tabs } from "@nextui-org/tabs";
 const DashboardSidebar = () => {
   const { user } = useUser();
 
-  console.log({ user });
-
   return (
     <div className="w-full text-white bg-[#0F212F]">
       <div className="  min-h-screen text-center">

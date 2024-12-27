@@ -20,7 +20,7 @@ const Projects = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {projects?.map((project) => (
+        {projects?.map((project:any) => (
           <Link key={project?._id} href={`/projects/${project?._id}`}>
             <div className="group  relative items-center justify-center overflow-hidden  hover:shadow-xl hover:shadow-black/30 transition-shadow">
               <div className=" border">
@@ -53,7 +53,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    <Tooltip color="#fff" content="Live link">
+                    <Tooltip color="default" content="Live link">
                       <div className="rounded-full -mt-1  text-sm capitalize text-white">
                         <IoMdOpen size={45} />
                       </div>
@@ -66,7 +66,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    <Tooltip color="#fff" content="Github client link">
+                    <Tooltip color="default" content="Github client link">
                       <div className="rounded-full  text-sm capitalize text-white">
                         <FaSquareGithub size={40} />
                       </div>
@@ -79,7 +79,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    <Tooltip color="#fff" content="Github server link">
+                    <Tooltip color="default" content="Github server link">
                       <div className="rounded-full  text-sm capitalize text-white">
                         <FaGithubSquare size={40} />
                       </div>

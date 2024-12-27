@@ -11,10 +11,10 @@ const SeeFeaturesModal = ({ buttonText, features, title }: IProps) => {
     <RWModal buttonClassName="flex-1" buttonText={buttonText} title={title}>
       <div>
         {features.map((item, index) => (
-          <p className="py-2 px-1 rounded-md my-2 bg-[#0F212F]">
+          <div key={index} className="py-2 px-1 rounded-md my-2 bg-[#0F212F]">
             {index + 1}
             {"."} {item}
-          </p>
+          </div>
         ))}
       </div>
     </RWModal>

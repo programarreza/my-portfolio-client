@@ -8,7 +8,6 @@ import {
 import Link, { default as NextLink } from "next/link";
 import { useEffect, useState } from "react";
 
-import { Logo } from "../../icons";
 
 import NavbarDropdown from "./NavbarDropDown";
 import NavbarLinks from "./NavbarLinks";
@@ -57,7 +56,6 @@ export const Navbar = () => {
               className="flex justify-start items-center gap-1"
               href="/"
             >
-              <Logo />
               <span className=""> Portfolio</span>
             </NextLink>
           </NavbarBrand>

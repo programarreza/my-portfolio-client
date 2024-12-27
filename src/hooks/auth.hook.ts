@@ -13,7 +13,6 @@ export const useUserRegistration = () => {
     },
     onError: (error) => {
       toast.error(error.message);
-      console.log(error);
     },
   });
 };
@@ -27,7 +26,6 @@ export const useUserLogin = () => {
     },
     onError: (error) => {
       toast.error(error.message);
-      console.log(error);
     },
   });
 };
