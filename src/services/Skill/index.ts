@@ -40,7 +40,6 @@ export const updateSkill = async (args: any) => {
 
     return data;
   } catch (error: any) {
-    console.log("from update skill", error?.response?.data?.message);
     throw new Error(error);
   }
 };
@@ -51,7 +50,6 @@ export const deleteSkill = async (skillId: string) => {
 
     return data;
   } catch (error: any) {
-    console.log("from delete skill", error?.response?.data?.message);
     throw new Error(error);
   }
 };

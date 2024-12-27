@@ -37,7 +37,7 @@ export const getSingleBlog = async (blogId: string) => {
 };
 
 export const updateBlog = async (args: any) => {
-  console.log({ args });
+
   try {
     const { data } = await axiosInstance.patch(
       `/blogs/${args?.blogId}`,
@@ -46,7 +46,6 @@ export const updateBlog = async (args: any) => {
 
     return data;
   } catch (error: any) {
-    console.log("from update blog", error?.response?.data?.message);
     throw new Error(error);
   }
 };
@@ -57,7 +56,6 @@ export const deleteBlog = async (blogId: string) => {
 
     return data;
   } catch (error: any) {
-    console.log("from delete blog", error?.response?.data?.message);
     throw new Error(error);
   }
 };

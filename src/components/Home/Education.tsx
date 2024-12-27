@@ -15,7 +15,7 @@ const Education = () => {
       <h2 className="text-white pb-12 text-3xl text-center"> My journey</h2>
 
       <div className="grid lg:grid-cols-2 gap-5">
-        {experiences?.map((experience) => (
+        {experiences?.map((experience:any) => (
           <div key={experience?._id} className="">
             <h3 className="text-2xl mb-3">{experience?.category} </h3>
             <div className="border p-3 rounded-md ">

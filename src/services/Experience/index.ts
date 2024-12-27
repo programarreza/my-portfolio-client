@@ -40,7 +40,6 @@ export const updateExperience = async (args: any) => {
 
     return data;
   } catch (error: any) {
-    console.log("from update experience", error?.response?.data?.message);
     throw new Error(error);
   }
 };

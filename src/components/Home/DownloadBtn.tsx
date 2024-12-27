@@ -1,5 +1,5 @@
 const DownloadBtn = () => {
-  const fileUrl = "../../../public/md_shafikul_islam_resume.pdf";
+  const fileUrl = "/md_shafikul_islam_resume.pdf";
 
   return (
     <div>

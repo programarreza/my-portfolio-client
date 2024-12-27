@@ -12,7 +12,7 @@ const BlogDetailsPage = ({ params }: { params: any }) => {
 
   return (
     <Container>
-      <div className="min-h-screen pt-24 px-24">
+      <div className="min-h-screen pt-24 ">
         {isLoading ? (
           <div className="flex justify-center items-center min-h-screen">
             <div className="flex w-fit mx-auto">

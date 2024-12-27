@@ -21,7 +21,6 @@ export const registerUser = async (userData: FieldValues) => {
 
     return data;
   } catch (error: any) {
-    console.log("from registerUser", error?.response?.data?.message);
     throw new Error(error);
   }
 };
@@ -37,7 +36,6 @@ export const loginUser = async (userData: FieldValues) => {
 
     return data;
   } catch (error: any) {
-    console.log("from registerUser", error?.response?.data?.message);
     throw new Error(error);
   }
 };
@@ -78,7 +76,7 @@ export const getNewAccessToken = async () => {
     });
 
     return res.data;
-  } catch (error) {
+  } catch (error:any) {
     throw new Error("Failed to get new access token");
   }
 };

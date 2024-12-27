@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
-
-import DownloadBtn from "./downloadBtn";
+import DownloadBtn from "./DownloadBtn";
 
 const Banner = () => {
   return (
